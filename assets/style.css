@@ -11,8 +11,17 @@ body {
 	transition: background 500ms ease;
 }
 
+body {
+    color: saddlebrown;
+    Font-family: arial;
+    .cursive {
+    font-family: cursive;
+}
+
+
+
 p, li {
-	font-size:  22px;
+	font-size:  20px;
 	line-height: 30px;
 }
 

@@ -273,18 +273,18 @@ main p {
   border: 2px solid #81d4fa;
 }
 
-.eye.left { left: 58px; }
+.eye.left { left: 62px; }
 .eye.right { left: 94px; }
 
 .eye::after {
   content: '';
   position: absolute;
-  width: 4px;
+  width: 5px;
   height: 4px;
   background: radial-gradient(circle, #ffffff 50%, #e0e0e0 100%);
   border-radius: 50%;
-  top: 9px;
-  left: 12px;
+  top: 3px;
+  left: 5px;
 }
 
 /* Nose */

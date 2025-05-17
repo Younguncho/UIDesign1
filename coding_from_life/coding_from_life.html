@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>coding_from_life.</title>
+  <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+  </script>
+  <style>
+    body {
+      background: #fff;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .scene {
+      position: relative;
+      width: 600px;
+      height: 400px;
+    }
+
+    /* Apple */
+    .apple {
+      position: absolute;
+      left: 60px;
+      top: 235px;
+      width: 85px;
+      height: 85px;
+      background: radial-gradient(circle at 30% 30%, #ff5252 20%, #d32f2f 60%, #b71c1c 100%);
+      border-radius: 50%;
+      z-index: 1;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .apple::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, transparent 70%);
+      top: 10px;
+      left: 20px;
+      border-radius: 50%;
+    }
+
+    .apple::before {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 15px;
+      background: linear-gradient(to bottom, #5d4037, #3e2723);
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-10deg);
+    }
+
+    /* Pocari Sweat Can */
+    .can {
+      position: absolute;
+      left: 120px;
+      top: 150px;
+      width: 70px;
+      height: 170px;
+      background: linear-gradient(to bottom, #4fc3f7 0%, #0288d1 50%, #01579b 100%);
+      border-radius: 18px;
+      z-index: 2;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .can::before {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 10px;
+      background: radial-gradient(ellipse at center, #e0e0e0 40%, #b0bec5 100%);
+      top: 0;
+      border-radius: 18px 18px 0 0;
+    }
+
+    .can::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 100px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+      top: 20px;
+      left: 10px;
+    }
+
+    /* Steel Cup */
+    .cup {
+      position: absolute;
+      left: 330px;
+      top: 240px;
+      width: 65px;
+      height: 80px;
+      background: linear-gradient(120deg, #f5f5f5 30%, #d0d9dd 60%, #b0bec5 100%);
+      border-radius: 0 0 40px 40px / 0 0 50px 50px;
+      z-index: 4;
+      transform: skew(-10deg, 0deg);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 -5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .cup::before {
+      content: '';
+      position: absolute;
+      width: 65px;
+      height: 8px;
+      background: linear-gradient(to bottom, #ffffff, #d0d9dd);
+      top: 0;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .cup::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+      top: 10px;
+      left: 10px;
+    }
+
+    .cup .interior {
+      position: absolute;
+      width: 55px;
+      height: 12px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 30%, transparent 70%);
+      top: 8px;
+      left: 5px;
+    }
+
+    /* Cat Mario */
+    .cat-mario {
+      position: absolute;
+      left: 180px;
+      top: 130px;
+      width: 185px;
+      height: 190px;
+      z-index: 3;
+    }
+
+    /* Ears */
+    .ear {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background: radial-gradient(circle, #ffe066 40%, #f57f17 100%);
+      border-radius: 60% 60% 0 0;
+      top: -4px;
+      z-index: 3;
+      border: 3px solid #fff;
+      border-bottom: none;
+      box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .ear.left { left: 15px; transform: rotate(-18deg); }
+    .ear.right { left: 99px; transform: rotate(18deg); }
+
+    .inner-ear {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle, #ffd1d1 50%, #f8bbd0 100%);
+      border-radius: 50%;
+      top: 2px;
+      z-index: 4;
+    }
+
+    .inner-ear.left { left: 26px; }
+    .inner-ear.right { left: 110px; }
+
+    /* Head */
+    .head {
+      position: absolute;
+      left: 22px;
+      top: 10px;
+      width: 110px;
+      height: 90px;
+      background: radial-gradient(circle at 40% 40%, #ffeb3b 30%, #f57f17 100%);
+      border-radius: 60px / 55px;
+      z-index: 4;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Face */
+    .face {
+      position: absolute;
+      left: 40px;
+      top: 30px;
+      width: 80px;
+      height: 56px;
+      background: linear-gradient(to bottom, #fff3e0 40%, #ffe5d0 100%);
+      border-radius: 45px 45px 40px 40px / 35px 35px 40px 40px;
+      z-index: 5;
+      box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Eyes */
+    .eye {
+      position: absolute;
+      width: 18px;
+      height: 22px;
+      background: radial-gradient(circle, #000000 50%, #333333 100%);
+      border-radius: 50%;
+      top: 45px;
+      z-index: 6;
+      border: 2px solid #81d4fa;
+    }
+
+    .eye.left { left: 58px; }
+    .eye.right { left: 94px; }
+
+    .eye::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, #ffffff 50%, #e0e0e0 100%);
+      border-radius: 50%;
+      top: 9px;
+      left: 12px;
+    }
+
+    /* Pupils (Removed) */
+    .pupil {
+      display: none;
+    }
+
+    /* Nose */
+    .nose {
+      position: absolute;
+      width: 18px;
+      height: 14px;
+      background: radial-gradient(circle, #f8bbd0 50%, #ec407a 100%);
+      border-radius: 50%;
+      top: 65px;
+      left: 81px;
+      z-index: 8;
+      border: 1.5px solid #b78a6b;
+    }
+
+    /* Mustache */
+    .mustache {
+      position: absolute;
+      width: 40px;
+      height: 10px;
+      top: 72px; /* Moved downwards from 65px to 70px */
+      left: 71px; /* Centers horizontally relative to the nose */
+      z-index: 9; /* Above face and nose */
+    }
+
+    .mustache::before,
+    .mustache::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 8px;
+      background: radial-gradient(circle, #000000 50%, #333333 100%); /* Black with slight gradient */
+      border-radius: 10px 10px 5px 5px; /* Curved top, flatter bottom */
+      top: 1px;
+    }
+
+    .mustache::before {
+      left: -2px; /* Left segment */
+      transform: rotate(15deg); /* Slight upward tilt */
+    }
+
+    .mustache::after {
+      right: -2px; /* Right segment */
+      transform: rotate(-15deg); /* Slight upward tilt */
+    }
+
+    .mustache .center {
+      position: absolute;
+      width: 14px;
+      height: 8px;
+      background: radial-gradient(circle, #000000 50%, #333333 100%);
+      border-radius: 5px;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%); /* Center horizontally */
+      z-index: 10; /* Above side segments */
+    }
+
+    /* Cheek blush */
+    .cheek {
+      position: absolute;
+      width: 14px;
+      height: 8px;
+      background: radial-gradient(circle, #ffb08c 50%, #ff8a65 100%);
+      border-radius: 50%;
+      top: 72px;
+      z-index: 8;
+    }
+
+    .cheek.left { left: 58px; }
+    .cheek.right { left: 108px; }
+
+    /* Stripes */
+    .stripe {
+      position: absolute;
+      width: 14px;
+      height: 4px;
+      background: linear-gradient(to right, #f9b233, #ef6c00);
+      border-radius: 2px;
+      z-index: 10;
+    }
+
+    .stripe.one { left: 35px; top: 35px; transform: rotate(-18deg); }
+    .stripe.two { left: 38px; top: 45px; transform: rotate(-12deg); }
+    .stripe.three { left: 40px; top: 55px; transform: rotate(-8deg); }
+
+    /* Body */
+    .body {
+      position: absolute;
+      left: 50px;
+      top: 85px;
+      width: 75px;
+      height: 90px;
+      background: radial-gradient(circle at 50% 30%, #ffeb3b 30%, #f57f17 100%);
+      border-radius: 40px / 50px;
+      z-index: 5;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Belly */
+    .belly {
+      position: absolute;
+      left: 75px;
+      top: 110px;
+      width: 38px;
+      height: 50px;
+      background: radial-gradient(circle, #ffffff 50%, #eeeeee 100%);
+      border-radius: 50%;
+      z-index: 6;
+      box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Arms */
+    .arm {
+      position: absolute;
+      width: 32px;
+      height: 48px;
+      background: radial-gradient(circle, #ffe066 40%, #f57f17 100%);
+      border-radius: 50%;
+      top: 110px;
+      z-index: 6;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .arm.left { left: 30px; transform: rotate(30deg); }
+    .arm.right { left: 105px; transform: rotate(-30deg); }
+
+    /* Hands */
+    .hand {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle, #ffffff 50%, #eeeeee 100%);
+      border-radius: 50%;
+      top: 145px;
+      z-index: 7;
+      border: 2px solid #f57f17;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .hand.left { left: 28px; }
+    .hand.right { left: 113px; }
+
+    /* Legs */
+    .leg {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background: radial-gradient(circle, #ffffff 50%, #eeeeee 100%);
+      border-radius: 50%;
+      top: 154px;
+      z-index: 6;
+      border: 2px solid #f57f17;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .leg.left { left: 50px; }
+    .leg.right { left: 90px; }
+
+    /* Footpads */
+    .footpad {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle, #ffb08c 50%, #ff8a65 100%);
+      border-radius: 50%;
+      top: 169px;
+      z-index: 7;
+    }
+
+    .footpad.left { left: 58px; }
+    .footpad.right { left: 98px; }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="apple"></div>
+    <div class="can"></div>
+    <div class="cup">
+      <div class="interior"></div>
+    </div>
+    <div class="cat-mario">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="inner-ear left"></div>
+      <div class="inner-ear right"></div>
+      <div class="head"></div>
+      <div class="stripe one"></div>
+      <div class="stripe two"></div>
+      <div class="stripe three"></div>
+      <div class="face"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="pupil left"></div>
+      <div class="pupil right"></div>
+      <div class="nose"></div>
+      <div class="mustache">
+        <div class="center"></div>
+      </div>
+      <div class="cheek left"></div>
+      <div class="cheek right"></div>
+      <div class="body"></div>
+      <div class="belly"></div>
+      <div class="arm left"></div>
+      <div class="arm right"></div>
+      <div class="hand left"></div>
+      <div class="hand right"></div>
+      <div class="leg left"></div>
+      <div class="leg right"></div>
+      <div class="footpad left"></div>
+      <div class="footpad right"></div>
+    </div>
+  </div>
+</body>
+</html>

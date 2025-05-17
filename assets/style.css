@@ -125,16 +125,19 @@ h2 {
   text-align: center;
 }
 
-#exercises ul {
+#exercises ul,
+#projects ul { /* Added #projects to match #exercises styling */
   list-style: none;
   text-align: center;
 }
 
-#exercises ul li {
+#exercises ul li,
+#projects ul li { /* Added #projects to match #exercises styling */
   margin: 0.5rem 0;
 }
 
-#exercises ul a {
+#exercises ul a,
+#projects ul a { /* Added #projects to match #exercises styling */
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: #f9f9f9;
@@ -145,7 +148,8 @@ h2 {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#exercises ul a:hover {
+#exercises ul a:hover,
+#projects ul a:hover { /* Added #projects to match #exercises styling */
   background-color: #e0e0e0;
   transform: translateY(-2px);
 }

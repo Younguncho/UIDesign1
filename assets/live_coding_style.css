@@ -1,0 +1,945 @@
+/* Reset default styles for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+  scroll-behavior: smooth;
+}
+
+/* Container for centering content */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  padding: 2rem 0;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Back button */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #fff;
+  color: #007bff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Main content */
+main {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+main h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+main p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* Scene container */
+.scene {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  margin: 2rem auto;
+  background: linear-gradient(to bottom, #000000 0%, #E0F6FF 70%, #A67B5B 60%, #F5F5DC 100%); /* Sky to ground */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Apple */
+.apple {
+  position: absolute;
+  left: 60px;
+  top: 235px;
+  width: 85px;
+  height: 85px;
+  background: radial-gradient(circle at 30% 30%, #ff5252 20%, #d32f2f 60%, #b71c1c 100%);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.apple::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, transparent 70%);
+  top: 10px;
+  left: 20px;
+  border-radius: 50%;
+}
+
+.apple::before {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 15px;
+  background: linear-gradient(to bottom, #5d4037, #3e2723);
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+}
+
+/* Pocari Sweat Can */
+.can {
+  position: absolute;
+  left: 140px;
+  top: 150px;
+  width: 70px;
+  height: 170px;
+  background: linear-gradient(to bottom, #4fc3f7 0%, #0288d1 50%, #01579b 100%);
+  border-radius: 18px;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.can::before {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 10px;
+  background: radial-gradient(ellipse at center, #e0e0e0 40%, #b0bec5 100%);
+  top: 0;
+  left: 0px;
+  border-radius: 18px 18px 0 0;
+}
+
+.can::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+  top: 20px;
+  left: 10px;
+}
+
+/* Steel Cup */
+.cup {
+  position: absolute;
+  left: 330px;
+  top: 240px;
+  width: 65px;
+  height: 80px;
+  background: linear-gradient(120deg, #f5f5f5 30%, #d0d9dd 60%, #b0bec5 100%);
+  border-radius: 0 0 40px 40px / 0 0 50px 50px;
+  z-index: 4;
+  transform: skew(-10deg, 0deg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 -5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cup::before {
+  content: '';
+  position: absolute;
+  width: 65px;
+  height: 8px;
+  background: linear-gradient(to bottom, #ffffff, #d0d9dd);
+  top: 0px;
+  left:2px;
+  border-radius: 5px 5px 0 0;
+}
+
+.cup::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+  top: 10px;
+  left: 10px;
+}
+
+.cup .interior {
+  position: absolute;
+  width: 55px;
+  height: 12px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 30%, transparent 70%);
+  top: 8px;
+  left: 5px;
+}
+
+/* Cat Mario */
+.cat-mario {
+  position: absolute;
+  left: 180px;
+  top: 130px;
+  width: 185px;
+  height: 190px;
+  z-index: 3;
+}
+
+/* Ears */
+.ear {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: radial-gradient(circle, #ffe066 40%, #f57f17 100%);
+  border-radius: 60% 60% 0 0;
+  top: -4px;
+  z-index: 3;
+  border: 3px solid #fff;
+  border-bottom: none;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ear.left { left: 25px; transform: rotate(-18deg); }
+.ear.right { left: 99px; transform: rotate(18deg); }
+
+.inner-ear {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #ffd1d1 50%, #f8bbd0 100%);
+  border-radius: 50%;
+  top: 2px;
+  z-index: 4;
+}
+
+.inner-ear.left { left: 32px; }
+.inner-ear.right { left: 110px; }
+
+/* Head */
+.head {
+  position: absolute;
+  left: 27px;
+  top: 10px;
+  width: 110px;
+  height: 90px;
+  background: radial-gradient(circle at 40% 40%, #ffeb3b 30%, #f57f17 100%);
+  border-radius: 60px / 55px;
+  z-index: 4;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Face */
+.face {
+  position: absolute;
+  left: 40px;
+  top: 30px;
+  width: 80px;
+  height: 56px;
+  background: linear-gradient(to bottom, #fff3e0 40%, #ffe5d0 100%);
+  border-radius: 45px 45px 40px 40px / 35px 35px 40px 40px;
+  z-index: 5;
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Eyes */
+.eye {
+  position: absolute;
+  width: 18px;
+  height: 22px;
+  background: radial-gradient(circle, #000000 50%, #333333 100%);
+  border-radius: 50%;
+  top: 45px;
+  z-index: 6;
+  border: 2px solid #81d4fa;
+}
+
+.eye.left { left: 58px; }
+.eye.right { left: 94px; }
+
+.eye::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffffff 50%, #e0e0e0 100%);
+  border-radius: 50%;
+  top: 9px;
+  left: 12px;
+}
+
+/* Nose */
+.nose {
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  background: radial-gradient(circle, #f8bbd0 50%, #ec407a 100%);
+  border-radius: 50%;
+  top: 65px;
+  left: 81px;
+  z-index: 8;
+  border: 1.5px solid #b78a6b;
+}
+
+/* Mustache */
+.mustache {
+  position: absolute;
+  width: 40px;
+  height: 10px;
+  top: 72px;
+  left: 71px;
+  z-index: 9;
+}
+
+.mustache::before,
+.mustache::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 8px;
+  background: radial-gradient(circle, #000000 50%, #333333 100%);
+  border-radius: 10px 10px 5px 5px;
+  top: 1px;
+}
+
+.mustache::before {
+  left: -2px;
+  transform: rotate(15deg);
+}
+
+.mustache::after {
+  right: -2px;
+  transform: rotate(-15deg);
+}
+
+.mustache .center {
+  position: absolute;
+  width: 14px;
+  height: 8px;
+  background: radial-gradient(circle, #000000 50%, #333333 100%);
+  border-radius: 5px;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Cheek blush */
+.cheek {
+  position: absolute;
+  width: 14px;
+  height: 8px;
+  background: radial-gradient(circle, #ffb08c 50%, #ff8a65 100%);
+  border-radius: 50%;
+  top: 72px;
+  z-index: 8;
+}
+
+.cheek.left { left: 58px; }
+.cheek.right { left: 108px; }
+
+/* Stripes */
+.stripe {
+  position: absolute;
+  width: 14px;
+  height: 4px;
+  background: linear-gradient(to right, #f9b233, #ef6c00);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.stripe.one { left: 35px; top: 35px; transform: rotate(-18deg); }
+.stripe.two { left: 38px; top: 45px; transform: rotate(-12deg); }
+.stripe.three { left: 40px; top: 55px; transform: rotate(-8deg); }
+
+/* Body */
+.body {
+  position: absolute;
+  left: 49px;
+  top: 85px;
+  width: 75px;
+  height: 90px;
+  background: radial-gradient(circle at 50% 30%, #ffeb3b 30%, #f57f17 100%);
+  border-radius: 40px / 50px;
+  z-index: 5;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Belly */
+.belly {
+  position: absolute;
+  left: 75px;
+  top: 110px;
+  width: 38px;
+  height: 50px;
+  background: radial-gradient(circle, #ffffff 50%, #eeeeee 100%);
+  border-radius: 50%;
+  z-index: 6;
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Arms */
+.arm {
+  position: absolute;
+  width: 32px;
+  height: 48px;
+  background: radial-gradient(circle, #ffe066 40%, #f57f17 100%);
+  border-radius: 50%;
+  top: 110px;
+  z-index: 6;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.arm.left { left: 30px; transform: rotate(30deg); }
+.arm.right { left: 105px; transform: rotate(-30deg); }
+
+/* Hands */
+.hand {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle, #ffffff 50%, #eeeeee 100%);
+  border-radius: 50%;
+  top: 145px;
+  z-index: 7;
+  border: 2px solid #f57f17;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hand.left { left: 28px; }
+.hand.right { left: 113px; }
+
+/* Legs */
+.leg {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: radial-gradient(circle, #ffffff 50%, #eeeeee 100%);
+  border-radius: 50%;
+  top: 154px;
+  z-index: 6;
+  border: 2px solid #f57f17;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.leg.left { left: 50px; }
+.leg.right { left: 90px; }
+
+/* Footpads */
+.footpad {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #ffb08c 50%, #ff8a65 100%);
+  border-radius: 50%;
+  top: 169px;
+  z-index: 7;
+}
+
+.footpad.left { left: 58px; }
+.footpad.right { left: 98px; }
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header {
+    padding: 1.5rem 0;
+  }
+
+  main {
+    padding: 2rem 0;
+  }
+
+  main h1 {
+    font-size: 2rem;
+  }
+
+  main p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    top: 15px;
+    left: 15px;
+    padding: 0.5rem 1rem;
+  }
+
+  .scene {
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    margin: 1rem auto;
+  }
+
+  .apple {
+    left: 40px;
+    top: 210px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .apple::after {
+    width: 15px;
+    height: 15px;
+    top: 8px;
+    left: 15px;
+  }
+
+  .apple::before {
+    width: 4px;
+    height: 12px;
+    top: -8px;
+  }
+
+  .can {
+    left: 90px;
+    top: 130px;
+    width: 60px;
+    height: 140px;
+  }
+
+  .can::before {
+    width: 60px;
+    height: 8px;
+  }
+
+  .can::after {
+    width: 15px;
+    height: 80px;
+    top: 15px;
+    left: 8px;
+  }
+
+  .cup {
+    left: 280px;
+    top: 220px;
+    width: 55px;
+    height: 70px;
+  }
+
+  .cup::before {
+    width: 55px;
+    height: 6px;
+  }
+
+  .cup::after {
+    width: 12px;
+    height: 50px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .cup .interior {
+    width: 45px;
+    height: 10px;
+    top: 6px;
+    left: 5px;
+  }
+
+  .cat-mario {
+    left: 150px;
+    top: 110px;
+    width: 160px;
+    height: 170px;
+  }
+
+  .ear {
+    width: 32px;
+    height: 32px;
+    top: -3px;
+  }
+
+  .ear.left { left: 12px; }
+  .ear.right { left: 85px; }
+
+  .inner-ear {
+    width: 14px;
+    height: 14px;
+    top: 2px;
+  }
+
+  .inner-ear.left { left: 22px; }
+  .inner-ear.right { left: 95px; }
+
+  .head {
+    left: 18px;
+    top: 8px;
+    width: 100px;
+    height: 80px;
+  }
+
+  .face {
+    left: 35px;
+    top: 25px;
+    width: 70px;
+    height: 50px;
+  }
+
+  .eye {
+    width: 16px;
+    height: 20px;
+    top: 40px;
+  }
+
+  .eye.left { left: 50px; }
+  .eye.right { left: 82px; }
+
+  .eye::after {
+    width: 3px;
+    height: 3px;
+    top: 8px;
+    left: 10px;
+  }
+
+  .nose {
+    width: 16px;
+    height: 12px;
+    top: 58px;
+    left: 72px;
+  }
+
+  .mustache {
+    width: 35px;
+    top: 65px;
+    left: 62px;
+  }
+
+  .mustache::before,
+  .mustache::after {
+    width: 16px;
+    height: 7px;
+    top: 1px;
+  }
+
+  .mustache .center {
+    width: 12px;
+    height: 7px;
+    top: 2px;
+  }
+
+  .cheek {
+    width: 12px;
+    height: 7px;
+    top: 65px;
+  }
+
+  .cheek.left { left: 50px; }
+  .cheek.right { left: 95px; }
+
+  .stripe {
+    width: 12px;
+    height: 3px;
+  }
+
+  .stripe.one { left: 30px; top: 30px; }
+  .stripe.two { left: 32px; top: 38px; }
+  .stripe.three { left: 34px; top: 46px; }
+
+  .body {
+    left: 45px;
+    top: 75px;
+    width: 65px;
+    height: 80px;
+  }
+
+  .belly {
+    left: 65px;
+    top: 95px;
+    width: 34px;
+    height: 45px;
+  }
+
+  .arm {
+    width: 28px;
+    height: 42px;
+    top: 95px;
+  }
+
+  .arm.left { left: 25px; }
+  .arm.right { left: 90px; }
+
+  .hand {
+    width: 20px;
+    height: 20px;
+    top: 125px;
+  }
+
+  .hand.left { left: 24px; }
+  .hand.right { left: 98px; }
+
+  .leg {
+    width: 32px;
+    height: 32px;
+    top: 135px;
+  }
+
+  .leg.left { left: 45px; }
+  .leg.right { left: 80px; }
+
+  .footpad {
+    width: 14px;
+    height: 14px;
+    top: 150px;
+  }
+
+  .footpad.left { left: 52px; }
+  .footpad.right { left: 88px; }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  main h1 {
+    font-size: 1.8rem;
+  }
+
+  main p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    top: 10px;
+    left: 10px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .scene {
+    max-width: 400px;
+    height: 300px;
+  }
+
+  .apple {
+    left: 30px;
+    top: 180px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .apple::after {
+    width: 12px;
+    height: 12px;
+    top: 6px;
+    left: 12px;
+  }
+
+  .apple::before {
+    width: 3px;
+    height: 10px;
+    top: -6px;
+  }
+
+  .can {
+    left: 70px;
+    top: 110px;
+    width: 50px;
+    height: 120px;
+  }
+
+  .can::before {
+    width: 50px;
+    height: 6px;
+  }
+
+  .can::after {
+    width: 12px;
+    height: 60px;
+    top: 12px;
+    left: 6px;
+  }
+
+  .cup {
+    left: 230px;
+    top: 190px;
+    width: 45px;
+    height: 60px;
+  }
+
+  .cup::before {
+    width: 45px;
+    height: 5px;
+  }
+
+  .cup::after {
+    width: 10px;
+    height: 40px;
+    top: 6px;
+    left: 6px;
+  }
+
+  .cup .interior {
+    width: 35px;
+    height: 8px;
+    top: 5px;
+    left: 5px;
+  }
+
+  .cat-mario {
+    left: 120px;
+    top: 90px;
+    width: 140px;
+    height: 150px;
+  }
+
+  .ear {
+    width: 28px;
+    height: 28px;
+    top: -2px;
+  }
+
+  .ear.left { left: 10px; }
+  .ear.right { left: 75px; }
+
+  .inner-ear {
+    width: 12px;
+    height: 12px;
+    top: 1px;
+  }
+
+  .inner-ear.left { left: 20px; }
+  .inner-ear.right { left: 85px; }
+
+  .head {
+    left: 15px;
+    top: 6px;
+    width: 90px;
+    height: 70px;
+  }
+
+  .face {
+    left: 30px;
+    top: 20px;
+    width: 60px;
+    height: 45px;
+  }
+
+  .eye {
+    width: 14px;
+    height: 18px;
+    top: 35px;
+  }
+
+  .eye.left { left: 43px; }
+  .eye.right { left: 72px; }
+
+  .eye::after {
+    width: 2px;
+    height: 2px;
+    top: 7px;
+    left: 9px;
+  }
+
+  .nose {
+    width: 14px;
+    height: 10px;
+    top: 50px;
+    left: 62px;
+  }
+
+  .mustache {
+    width: 30px;
+    top: 55px;
+    left: 54px;
+  }
+
+  .mustache::before,
+  .mustache::after {
+    width: 14px;
+    height: 6px;
+    top: 1px;
+  }
+
+  .mustache .center {
+    width: 10px;
+    height: 6px;
+    top: 2px;
+  }
+
+  .cheek {
+    width: 10px;
+    height: 6px;
+    top: 55px;
+  }
+
+  .cheek.left { left: 43px; }
+  .cheek.right { left: 82px; }
+
+  .stripe {
+    width: 10px;
+    height: 2px;
+  }
+
+  .stripe.one { left: 25px; top: 25px; }
+  .stripe.two { left: 27px; top: 32px; }
+  .stripe.three { left: 29px; top: 38px; }
+
+  .body {
+    left: 40px;
+    top: 65px;
+    width: 55px;
+    height: 70px;
+  }
+
+  .belly {
+    left: 55px;
+    top: 85px;
+    width: 30px;
+    height: 40px;
+  }
+
+  .arm {
+    width: 24px;
+    height: 36px;
+    top: 85px;
+  }
+
+  .arm.left { left: 20px; }
+  .arm.right { left: 80px; }
+
+  .hand {
+    width: 18px;
+    height: 18px;
+    top: 110px;
+  }
+
+  .hand.left { left: 20px; }
+  .hand.right { left: 86px; }
+
+  .leg {
+    width: 28px;
+    height: 28px;
+    top: 120px;
+  }
+
+  .leg.left { left: 40px; }
+  .leg.right { left: 70px; }
+
+  .footpad {
+    width: 12px;
+    height: 12px;
+    top: 130px;
+  }
+
+  .footpad.left { left: 46px; }
+  .footpad.right { left: 76px; }
+}

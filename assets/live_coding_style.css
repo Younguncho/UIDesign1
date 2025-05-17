@@ -154,14 +154,14 @@ main p {
 /* Steel Cup */
 .cup {
   position: absolute;
-  left: 330px;
+  left: 320px;
   top: 240px;
   width: 65px;
   height: 80px;
   background: linear-gradient(120deg, #f5f5f5 30%, #d0d9dd 60%, #b0bec5 100%);
   border-radius: 0 0 40px 40px / 0 0 50px 50px;
   z-index: 4;
-  transform: skew(-10deg, 0deg);
+  transform: skew(0deg, 0deg);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 -5px 10px rgba(0, 0, 0, 0.15);
 }
 

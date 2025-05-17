@@ -72,6 +72,13 @@ header {
   padding: 4rem 0;
 }
 
+.header-gif {
+  max-width: 200px; /* Adjust based on GIF size */
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem; /* Space between GIF and heading */
+}
+
 h1 {
   font-size: 4rem;
   font-weight: 700;
@@ -126,18 +133,18 @@ h2 {
 }
 
 #exercises ul,
-#projects ul { /* Added #projects to match #exercises styling */
+#projects ul {
   list-style: none;
   text-align: center;
 }
 
 #exercises ul li,
-#projects ul li { /* Added #projects to match #exercises styling */
+#projects ul li {
   margin: 0.5rem 0;
 }
 
 #exercises ul a,
-#projects ul a { /* Added #projects to match #exercises styling */
+#projects ul a {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: #f9f9f9;
@@ -149,7 +156,7 @@ h2 {
 }
 
 #exercises ul a:hover,
-#projects ul a:hover { /* Added #projects to match #exercises styling */
+#projects ul a:hover {
   background-color: #e0e0e0;
   transform: translateY(-2px);
 }
@@ -186,6 +193,10 @@ footer p {
     font-size: 1rem;
   }
 
+  .header-gif {
+    max-width: 150px; /* Smaller GIF on medium screens */
+  }
+
   nav .container {
     flex-direction: column;
     gap: 1rem;
@@ -213,6 +224,14 @@ footer p {
 @media (max-width: 480px) {
   h1 {
     font-size: 2.5rem;
+  }
+
+  .desc {
+    font-size: 0.9rem;
+  }
+
+  .header-gif {
+    max-width: 120px; /* Smaller GIF on small screens */
   }
 
   .container {

@@ -247,3 +247,113 @@ footer p {
     margin: 0.5rem 0;
   }
 }
+
+/* Existing styles remain unchanged, add these new styles */
+
+/* Theme toggle button */
+#theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 8px;
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Shiny text effect for toggle icon and other text */
+.shiny-text {
+  color: #ffffffcc;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.2) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200%;
+  }
+  100% {
+    background-position: -200%;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background: #000000;
+  color: #e0e0e0;
+}
+
+body.dark-mode header,
+body.dark-mode main {
+  background: #000000;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode .cursive,
+body.dark-mode a,
+body.dark-mode li {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode .cursive {
+  color: #f5f5f5;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.3) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 5s linear infinite;
+}
+
+body.dark-mode a {
+  color: #4da8ff;
+}
+
+body.dark-mode a:hover {
+  color: #80c0ff;
+  background: linear-gradient(
+    120deg,
+    rgba(128, 192, 255, 0.3) 40%,
+    rgba(128, 192, 255, 1) 50%,
+    rgba(128, 192, 255, 0.3) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+}
+
+body.dark-mode .desc {
+  color: #d0d0d0;
+}
+
+body.dark-mode #theme-toggle .shiny-text {
+  color: #ffffffcc;
+}

@@ -19,6 +19,9 @@
         <li>My favorite website is <a href="https://neal.fun/space-elevator/">Space Elevator</a></li>
       </ul>
     </div>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+      <span class="shiny-text" id="theme-icon">☀️</span>
+    </button>
   </header>
 
   <main class="container">
@@ -39,5 +42,26 @@
       </ul>
     </section>
   </main>
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Load saved theme or default to light
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+      body.classList.add('dark-mode');
+      themeIcon.textContent = '🌙';
+    } else {
+      themeIcon.textContent = '☀️';
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDarkMode = body.classList.contains('dark-mode');
+      themeIcon.textContent = isDarkMode ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>
